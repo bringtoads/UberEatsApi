@@ -1,5 +1,4 @@
 var builder = WebApplication.CreateBuilder(args);
-//Add service in  a scope
 {
     // Add services to the container.
     builder.Services.AddControllers();

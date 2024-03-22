@@ -1,0 +1,9 @@
+@UberEats.Api_HostAddress = http://localhost:5079
+
+POST {{UberEats.Api_HostAddress}}/auth/login
+Content-Type: application/json
+
+{
+  "email":"ajayadeepshrestha@gmail.com",
+  "password":"ToBeOrNotToBe@12345!"
+}

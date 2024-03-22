@@ -1,6 +1,6 @@
 @UberEats.Api_HostAddress = http://localhost:5079
 
-GET {{UberEats.Api_HostAddress}}/weatherforecast/
+GET {{UberEats.Api_HostAddress}}/ath/
 Accept: application/json
 
 ###
