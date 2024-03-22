@@ -7,6 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UberEats.Api", "UberEats.Ap
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UberEats.Contracts", "..\UberEats.Contracts\UberEats.Contracts.csproj", "{9BF3CCDF-AB93-4703-A57D-312CFDE8B279}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UberEats.Infrastructure", "..\UberEats.Infrastructure\UberEats.Infrastructure.csproj", "{D3634A40-F595-4C73-8F71-F003BE89AB82}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UberEats.Application", "..\UberEats.Application\UberEats.Application.csproj", "{E8A0B9DE-F2AF-4A07-8C4D-2FA71875B9A1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UberEats.Domain", "..\UberEats.Domain\UberEats.Domain.csproj", "{44BE5219-E507-4B08-9CF5-6B6E021BDFAA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +27,18 @@ Global
 		{9BF3CCDF-AB93-4703-A57D-312CFDE8B279}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9BF3CCDF-AB93-4703-A57D-312CFDE8B279}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9BF3CCDF-AB93-4703-A57D-312CFDE8B279}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3634A40-F595-4C73-8F71-F003BE89AB82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3634A40-F595-4C73-8F71-F003BE89AB82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3634A40-F595-4C73-8F71-F003BE89AB82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3634A40-F595-4C73-8F71-F003BE89AB82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8A0B9DE-F2AF-4A07-8C4D-2FA71875B9A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8A0B9DE-F2AF-4A07-8C4D-2FA71875B9A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8A0B9DE-F2AF-4A07-8C4D-2FA71875B9A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8A0B9DE-F2AF-4A07-8C4D-2FA71875B9A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44BE5219-E507-4B08-9CF5-6B6E021BDFAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44BE5219-E507-4B08-9CF5-6B6E021BDFAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44BE5219-E507-4B08-9CF5-6B6E021BDFAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44BE5219-E507-4B08-9CF5-6B6E021BDFAA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
