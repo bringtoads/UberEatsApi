@@ -8,13 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\UberEats.Application\UberEats.Application.csproj" />
     <ProjectReference Include="..\UberEats.Contracts\UberEats.Contracts.csproj" />
     <ProjectReference Include="..\UberEats.Infrastructure\UberEats.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>
