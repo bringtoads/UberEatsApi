@@ -10,9 +10,10 @@ namespace UberEats.Infrastructure.Authentication
     {
         public string GenerateToken(Guid userId, string firstName, string lastName)
         {
+            // using a symmetic key 
             var signingCredentials = new SigningCredentials(
                 new SymmetricSecurityKey(
-                    Encoding.UTF8.GetBytes("super-secret-key")),
+                    Encoding.UTF8.GetBytes("this-is-a-super-secret-key-to-see-if-the-authorization-is-working")),
                 SecurityAlgorithms.HmacSha256);
             var claims = new[]
             {
@@ -23,7 +24,7 @@ namespace UberEats.Infrastructure.Authentication
             };
             var securityToken = new JwtSecurityToken(
                 issuer: "UberEats",
-                expires: DateTime.Now.AddDays(15),
+                expires: DateTime.Now.AddDays(1),
                 claims : claims,
                 signingCredentials : signingCredentials);
             return new JwtSecurityTokenHandler().WriteToken(securityToken);
