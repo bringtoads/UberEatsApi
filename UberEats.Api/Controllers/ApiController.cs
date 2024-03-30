@@ -1,5 +1,6 @@
 ﻿using ErrorOr;
 using Microsoft.AspNetCore.Mvc;
+using UberEats.Api.Common.Http;
 
 namespace UberEats.Api.Controllers
 {
@@ -8,6 +9,7 @@ namespace UberEats.Api.Controllers
     {
         protected IActionResult Problem(List<Error> errors)
         {
+            HttpContext.Items[HttpContextItemKeys.Erros] = errors;
             var firstError = errors[0];
             var statusCode = firstError.Type switch
             {

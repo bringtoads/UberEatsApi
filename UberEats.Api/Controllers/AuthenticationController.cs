@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using UberEats.Application.Services.Authentication;
 using UberEats.Contracts.Authentication;
+using UberEats.Domain.Common.Errors;
 
 namespace UberEats.Api.Controllers
 {
@@ -24,6 +25,7 @@ namespace UberEats.Api.Controllers
                 request.LastName,
                 request.Email,
                 request.Password);
+           
             return authResult.Match(
                 authResult => Ok(MapAuthResult(authResult)),
                 errors => Problem(errors));
@@ -66,6 +68,12 @@ namespace UberEats.Api.Controllers
             var authResult = _authenticationService.Login(
                 request.Email,
                 request.Password);
+            if (authResult.IsError && authResult.FirstError == Errors.Authentication.InvalidCredentials)
+            {
+                return Problem(
+                    statusCode: StatusCodes.Status401Unauthorized,
+                    title: authResult.FirstError.Description);
+            }
             return authResult.Match(
                          authResult => Ok(MapAuthResult(authResult)),
                          errors => Problem(errors));
