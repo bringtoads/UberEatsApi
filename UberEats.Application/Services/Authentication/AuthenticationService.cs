@@ -1,7 +1,8 @@
-﻿using System.Runtime.CompilerServices;
+﻿using ErrorOr;
 using UberEats.Application.Common.Errors;
 using UberEats.Application.Common.Interfaces.Authentication;
 using UberEats.Application.Common.Interfaces.Persistence;
+using UberEats.Domain.Common.Errors;
 using UberEats.Domain.Entities;
 
 namespace UberEats.Application.Services.Authentication
@@ -16,7 +17,7 @@ namespace UberEats.Application.Services.Authentication
             _userRepository = userRepository;
         }
 
-        public AuthenticationResult Register(string firstName, string lastName, string email, string password)
+        public ErrorOr<AuthenticationResult> Register(string firstName, string lastName, string email, string password)
         {
             //1. Check if user already exists  (Validate user doesn't exist)
             if (_userRepository.GetUserByEmail(email) is not null)
@@ -24,7 +25,9 @@ namespace UberEats.Application.Services.Authentication
                 //return new AuthenticationResult(false, "User already exists");
                 //(this is not a good way)throw new Exception("User with given email already aexists"); 
                 //do this instead
-                throw new DuplicateEmailException();
+                //throw new DuplicateEmailException();
+                //return Result.Fail<AuthenticationResult>(new[] { new DuplicateEmailError() });
+                return Errors.User.DuplicateEmail;
             }
 
             //2. Create user (generate unique Id) and add to db
@@ -45,20 +48,20 @@ namespace UberEats.Application.Services.Authentication
                 token);
         }
 
-        public AuthenticationResult Login(string email, string password)
+        public ErrorOr<AuthenticationResult> Login(string email, string password)
         {
             //1.Validate if user exists
             if (_userRepository.GetUserByEmail(email) is not User user)
             {
-                throw new Exception("User with given email does not exist.");
+                return Errors.Authentication.InvalidCredentials;
             }
 
             //2. Validate the password is correct.
             if (user.Password != password)
             {
-                throw new Exception("Invalid password");
+                return Errors.Authentication.InvalidCredentials;
             }
-            
+
             //3. Create jwt token
             var token = _jwtTokenGenrator.GenerateToken(user);
             return new AuthenticationResult(

@@ -1,13 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using UberEats.Api.Filters;
+﻿using ErrorOr;
+using Microsoft.AspNetCore.Mvc;
 using UberEats.Application.Services.Authentication;
 using UberEats.Contracts.Authentication;
 
 namespace UberEats.Api.Controllers
 {
-    [ApiController]
+  
     [Route("auth")]
-    public class AuthenticationController : ControllerBase
+    public class AuthenticationController : ApiController
     {
         private readonly IAuthenticationService _authenticationService;
         public AuthenticationController(IAuthenticationService authenticationService)
@@ -17,28 +17,68 @@ namespace UberEats.Api.Controllers
         [HttpPost("register")]
         public IActionResult Register(RegisterRequest request)
         {
-            var authResult = _authenticationService.Register(request.FirstName, request.LastName, request.Email, request.Password);
-            var response = new AuthenticationResponse(
-                authResult.User.Id,
-                authResult.User.FirstName,
-                authResult.User.LastName,
-                authResult.User.Email,
-                authResult.Token
-                );
-            return Ok(response);
+
+            // using ErrorOr
+            ErrorOr<AuthenticationResult> authResult = _authenticationService.Register(
+                request.FirstName,
+                request.LastName,
+                request.Email,
+                request.Password);
+            return authResult.Match(
+                authResult => Ok(MapAuthResult(authResult)),
+                errors => Problem(errors));
+            ////using fluent
+            //if (registerResult.IsSuccess) 
+            //{
+            //    return Ok(MapAuthResult(registerResult.Value));
+            //}
+            //var firstError = registerResult.Errors[0];
+            //if (firstError is DuplicateEmailError)
+            //{
+            //    return Problem(statusCode: StatusCodes.Status409Conflict, title: "Email already exists.");
+            //}
+            //return Problem();
+
+            // using one of
+            //Result<AuthenticationResult> registerResult = _authenticationService.Register(request.FirstName, request.LastName, request.Email, request.Password);
+
+            //using oneof
+            //if (registerResult.IsT0)
+            //{
+            //    var authResult = registerResult.AsT0;
+            //    var response = MapAuthResult(authResult);
+            //    return Ok(response);
+            //}
+            //return Problem(statusCode: StatusCodes.Status409Conflict, title:"Email already exists.");
+
+            //using pattern matching above code and this is same
+            //return registerResult.Match(
+            //    authResult => Ok(MapAuthResult(authResult)),
+            //    _ => Problem(statusCode: StatusCodes.Status409Conflict, title: "Email already exists."));
+            //return registerResult.Match(
+            // authResult => Ok(MapAuthResult(authResult)),
+            // error => Problem(statusCode:(int)error.StatusCode, title: "Email already exists."));
         }
+
         [HttpPost("login")]
         public IActionResult Login(LoginRequest request)
         {
-            var authResult = _authenticationService.Login(request.Email, request.Password);
-            var response = new AuthenticationResponse(
-                authResult.User.Id,
-                authResult.User.FirstName,
-                authResult.User.LastName,
-                authResult.User.Email,
-                authResult.Token
-                );
-            return Ok(response);
+            var authResult = _authenticationService.Login(
+                request.Email,
+                request.Password);
+            return authResult.Match(
+                         authResult => Ok(MapAuthResult(authResult)),
+                         errors => Problem(errors));
+        }
+        private static AuthenticationResponse MapAuthResult(AuthenticationResult authResult)
+        {
+            return new AuthenticationResponse(
+            authResult.User.Id,
+            authResult.User.FirstName,
+            authResult.User.LastName,
+            authResult.User.Email,
+            authResult.Token
+            );
         }
     }
 }
