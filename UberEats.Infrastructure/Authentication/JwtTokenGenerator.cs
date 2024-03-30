@@ -6,6 +6,7 @@ using System.Security.Cryptography;
 using System.Text;
 using UberEats.Application.Common.Interfaces.Authentication;
 using UberEats.Application.Common.Interfaces.Services;
+using UberEats.Domain.Entities;
 
 namespace UberEats.Infrastructure.Authentication
 {
@@ -20,7 +21,7 @@ namespace UberEats.Infrastructure.Authentication
             _dateTimeProvider = dateTimeProvider;
             _jwtSettings = jwtSettings.Value;
         }
-        public string GenerateToken(Guid userId, string firstName, string lastName)
+        public string GenerateToken(User user)
         {
             // using a symmetic key 
             var signingCredentials = new SigningCredentials(
@@ -29,9 +30,9 @@ namespace UberEats.Infrastructure.Authentication
                 SecurityAlgorithms.HmacSha256);
             var claims = new[]
             {
-                new Claim(JwtRegisteredClaimNames.Sub, userId.ToString()),
-                new Claim(JwtRegisteredClaimNames.GivenName,firstName),
-                new Claim(JwtRegisteredClaimNames.FamilyName, lastName),
+                new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
+                new Claim(JwtRegisteredClaimNames.GivenName,user.FirstName),
+                new Claim(JwtRegisteredClaimNames.FamilyName, user.LastName),
                 new Claim(JwtRegisteredClaimNames.Jti,Guid.NewGuid().ToString())
             };
             var securityToken = new JwtSecurityToken(
