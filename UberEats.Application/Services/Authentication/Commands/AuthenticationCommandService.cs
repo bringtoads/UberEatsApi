@@ -1,5 +1,4 @@
 ﻿using ErrorOr;
-using UberEats.Application.Common.Errors;
 using UberEats.Application.Common.Interfaces.Authentication;
 using UberEats.Application.Common.Interfaces.Persistence;
 using UberEats.Application.Services.Authentication.Common;

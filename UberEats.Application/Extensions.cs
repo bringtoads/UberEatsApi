@@ -1,6 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using UberEats.Application.Services.Authentication.Commands;
-using UberEats.Application.Services.Authentication.Queries;
+﻿using MediatR;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace UberEats.Application
 {
@@ -8,9 +7,7 @@ namespace UberEats.Application
     {
         public static IServiceCollection AddApplicationCore(this IServiceCollection services)
         {
-            services.AddScoped<IAuthenticationCommandService, AuthenticationCommandService>();
-            services.AddScoped<IAuthenticationQueryService, AuthenticationQueryService>();
-
+            services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(AppDomain.CurrentDomain.GetAssemblies()));
             return services;
         }
     }
