@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using UberEats.Application.Services.Authentication;
+using UberEats.Application.Services.Authentication.Commands;
+using UberEats.Application.Services.Authentication.Queries;
 
 namespace UberEats.Application
 {
@@ -7,7 +8,8 @@ namespace UberEats.Application
     {
         public static IServiceCollection AddApplicationCore(this IServiceCollection services)
         {
-            services.AddScoped<IAuthenticationService, AuthenticationService>();
+            services.AddScoped<IAuthenticationCommandService, AuthenticationCommandService>();
+            services.AddScoped<IAuthenticationQueryService, AuthenticationQueryService>();
 
             return services;
         }

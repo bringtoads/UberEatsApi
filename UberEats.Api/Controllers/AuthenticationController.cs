@@ -1,26 +1,32 @@
 ﻿using ErrorOr;
 using Microsoft.AspNetCore.Mvc;
-using UberEats.Application.Services.Authentication;
+using UberEats.Application.Services.Authentication.Commands;
+using UberEats.Application.Services.Authentication.Common;
+using UberEats.Application.Services.Authentication.Queries;
 using UberEats.Contracts.Authentication;
 using UberEats.Domain.Common.Errors;
 
 namespace UberEats.Api.Controllers
 {
-  
+
     [Route("auth")]
     public class AuthenticationController : ApiController
     {
-        private readonly IAuthenticationService _authenticationService;
-        public AuthenticationController(IAuthenticationService authenticationService)
+        private readonly IAuthenticationCommandService _authenticationCommandService;
+        private readonly IAuthenticationQueryService _authenticationQueryService;
+        public AuthenticationController(
+            IAuthenticationCommandService authenticationService,
+            IAuthenticationQueryService authenticationQueryService)
         {
-            _authenticationService = authenticationService;
+            _authenticationCommandService = authenticationService;
+            _authenticationQueryService = authenticationQueryService;
         }
         [HttpPost("register")]
         public IActionResult Register(RegisterRequest request)
         {
 
             // using ErrorOr
-            ErrorOr<AuthenticationResult> authResult = _authenticationService.Register(
+            ErrorOr<AuthenticationResult> authResult = _authenticationCommandService.Register(
                 request.FirstName,
                 request.LastName,
                 request.Email,
@@ -65,7 +71,7 @@ namespace UberEats.Api.Controllers
         [HttpPost("login")]
         public IActionResult Login(LoginRequest request)
         {
-            var authResult = _authenticationService.Login(
+            var authResult = _authenticationQueryService.Login(
                 request.Email,
                 request.Password);
             if (authResult.IsError && authResult.FirstError == Errors.Authentication.InvalidCredentials)
