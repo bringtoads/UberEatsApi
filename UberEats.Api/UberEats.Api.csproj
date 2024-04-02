@@ -9,6 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Mapster" Version="7.4.1-pre01" />
+    <PackageReference Include="Mapster.DependencyInjection" Version="1.0.2-pre01" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\UberEats.Application\UberEats.Application.csproj" />
     <ProjectReference Include="..\UberEats.Contracts\UberEats.Contracts.csproj" />
     <ProjectReference Include="..\UberEats.Infrastructure\UberEats.Infrastructure.csproj" />
