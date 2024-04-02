@@ -9,12 +9,12 @@ using UberEats.Application.Authentication.Common;
 
 namespace UberEats.Application.Authentication.Commands.Login
 {
-    public class LoginCommandHandler :
+    public class LoginQueryHandler :
         IRequestHandler<LoginQuery, ErrorOr<AuthenticationResult>>
     {
         private readonly IJwtTokenGenerator _jwtTokenGenrator;
         private readonly IUserRepository _userRepository;
-        public LoginCommandHandler(IJwtTokenGenerator jwtTokenGenrator, IUserRepository userRepository)
+        public LoginQueryHandler(IJwtTokenGenerator jwtTokenGenrator, IUserRepository userRepository)
         {
             _jwtTokenGenrator = jwtTokenGenrator;
             _userRepository = userRepository;
