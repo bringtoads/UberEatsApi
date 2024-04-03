@@ -23,7 +23,7 @@ namespace UberEats.Infrastructure.Authentication
         }
         public string GenerateToken(User user)
         {
-            // using a symmetic key 
+            // using a symmetric key 
             var signingCredentials = new SigningCredentials(
                 new SymmetricSecurityKey(
                     Encoding.UTF8.GetBytes(_jwtSettings.Secret)),
