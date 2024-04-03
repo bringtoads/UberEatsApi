@@ -11,11 +11,6 @@ namespace UberEats.Api.Controllers
         { 
             Exception? exception = HttpContext.Features.Get<IExceptionHandlerFeature>()?.Error;
 
-            //var (statusCode, message) = exception switch
-            //{
-            //    DuplicateEmailException => (StatusCodes.Status409Conflict, "Email already exists."),
-            //    _ => (StatusCodes.Status500InternalServerError,"An unexpected error occured."),
-            //};
             var (statusCode, message) = exception switch
             {
                 IServiceException serviceException => ((int)serviceException.StatusCode, serviceException.ErrorMessage),
