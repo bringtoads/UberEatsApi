@@ -14,10 +14,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 var app = builder.Build();
 {
-    //middleware pipeline
+    //request pipeline(middlewares)
     app.UseExceptionHandler("/error");
 
-    app.UseHttpsRedirection();
+    app.UseAuthentication();
+    app.UseAuthorization();
+    //app.UseHttpsRedirection();
     app.MapControllers();
     app.Run();
 }

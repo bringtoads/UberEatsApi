@@ -3,15 +3,15 @@
 POST {{UberEats.Api_HostAddress}}/auth/register
 Content-Type: application/json
 
-# {
-#   "firstName":"Ajaya Deep",
-#   "lastName":"Shrestha",
-#   "email":"ajayadeepshrestha@gmail.com",
-#   "password":"ToBeOrNotToBe@12345!"
-# }
 {
-  "firstName":"",
-  "lastName":"",
-  "email":"",
-  "password":""
+  "firstname":"ajaya deep",
+  "lastname":"shrestha",
+  "email":"ajayadeepshrestha@gmail.com",
+  "password":"tobeornottobe@12345!"
 }
+# {
+#   "firstName":"",
+#   "lastName":"",
+#   "email":"",
+#   "password":""
+# }
