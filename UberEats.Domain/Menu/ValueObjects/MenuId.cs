@@ -4,7 +4,7 @@ namespace UberEats.Domain.Menu.ValueObjects
 {
     public sealed class MenuId : ValueObject
     {
-        public Guid Value { get; }
+        public Guid Value { get; protected set; }
         private MenuId(Guid value)
         {
             Value = value;
@@ -14,6 +14,12 @@ namespace UberEats.Domain.Menu.ValueObjects
         {
             return new(Guid.NewGuid());
         }
+
+        public static MenuId Create(Guid value)
+        {
+            return new(value);
+        }
+
         public override IEnumerable<object> GetEqualityComponents()
         {
             yield return Value;

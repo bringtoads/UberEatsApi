@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34316.72
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UberEats.Api", "UberEats.Api.csproj", "{A0CDDD9A-6692-40EB-97E5-C77AA1E06FE5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UberEats.Api", "UberEats.Api.csproj", "{A0CDDD9A-6692-40EB-97E5-C77AA1E06FE5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UberEats.Contracts", "..\UberEats.Contracts\UberEats.Contracts.csproj", "{9BF3CCDF-AB93-4703-A57D-312CFDE8B279}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UberEats.Contracts", "..\UberEats.Contracts\UberEats.Contracts.csproj", "{9BF3CCDF-AB93-4703-A57D-312CFDE8B279}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UberEats.Infrastructure", "..\UberEats.Infrastructure\UberEats.Infrastructure.csproj", "{D3634A40-F595-4C73-8F71-F003BE89AB82}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UberEats.Infrastructure", "..\UberEats.Infrastructure\UberEats.Infrastructure.csproj", "{D3634A40-F595-4C73-8F71-F003BE89AB82}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UberEats.Application", "..\UberEats.Application\UberEats.Application.csproj", "{E8A0B9DE-F2AF-4A07-8C4D-2FA71875B9A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UberEats.Application", "..\UberEats.Application\UberEats.Application.csproj", "{E8A0B9DE-F2AF-4A07-8C4D-2FA71875B9A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UberEats.Domain", "..\UberEats.Domain\UberEats.Domain.csproj", "{44BE5219-E507-4B08-9CF5-6B6E021BDFAA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UberEats.Domain", "..\UberEats.Domain\UberEats.Domain.csproj", "{44BE5219-E507-4B08-9CF5-6B6E021BDFAA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -11,15 +11,16 @@ namespace UberEats.Domain.Menu.Entities
 
         public IReadOnlyList<MenuItem> Items => _items.AsReadOnly();
 
-        private MenuSection(MenuSectionId menuSetionId, string name, string description) : base(menuSetionId)
+        private MenuSection(MenuSectionId menuSetionId, string name, string description, List<MenuItem> items) : base(menuSetionId)
         {
             Name = name;
             Description = description;
+            _items = items;
         }
 
-        public static MenuSection Create(string name, string description)
+        public static MenuSection Create(string name, string description, List<MenuItem> items)
         {
-            return new(MenuSectionId.CreateUnique(),name,description);
+            return new(MenuSectionId.CreateUnique(),name,description,items);
         }
     }
 }

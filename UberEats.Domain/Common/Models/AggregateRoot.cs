@@ -9,7 +9,7 @@
             Id =id;
         }
 
-        public AggregateRoot()
+        protected AggregateRoot()
         {
             
         }
