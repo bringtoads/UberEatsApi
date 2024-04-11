@@ -1,12 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using UberEats.Domain.Common.Models;
 
 namespace UberEats.Domain.Bill.ValueObjects
 {
-    internal class Price
+    public sealed class Price : ValueObject
     {
+        public decimal Amount { get; private set; }
+        public string Currency { get; private set; }
+
+        private Price(decimal amount, string currency)
+        {
+            Amount = amount;
+            Currency = currency;
+        }
+
+        public static Price CreateNew(decimal amount, string currency)
+        {
+            return new(amount, currency);
+        }
+
+        public override IEnumerable<object> GetEqualityComponents()
+        {
+            yield return Amount;
+            yield return Currency;
+        }
     }
 }

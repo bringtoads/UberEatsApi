@@ -21,9 +21,9 @@ namespace UberEats.Domain.Bill.ValueObjects
             return new(value);
         }
 
-        public override IEnumerable<object> GetEqalityComponenets()
+        public override IEnumerable<object> GetEqualityComponents()
         {
-            yield retrun Value;
+            yield return Value;
         }
     }
 }
