@@ -1,4 +1,4 @@
-﻿using UberEats.Domain.Entities;
+﻿using UberEats.Domain.User;
 namespace UberEats.Application.Authentication.Common
 {
     public record AuthenticationResult(

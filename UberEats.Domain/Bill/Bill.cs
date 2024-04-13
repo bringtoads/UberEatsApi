@@ -15,11 +15,28 @@ namespace UberEats.Domain.Bill
         public DateTime CreatedDateTime { get; }
         public DateTime UpdateDateTime { get; }
 
-        private Bill(BillId id, GuestId guestId, HostId hostId, Price price,DateTime createdDate, DateTime updatedDate) : base(id)
+        private Bill(
+            BillId id,
+            GuestId guestId,
+            HostId hostId,
+            Price price,
+            DateTime createdDate,
+            DateTime updatedDate) : base(id)
         {
             GuestId = guestId;
             HostId = hostId;
-            Price 
+            Price = price;
+            CreatedDateTime = createdDate;
+            UpdateDateTime = updatedDate;
         }
+
+        public static Bill Create(
+            GuestId guestId,
+            HostId hostId,
+            Price price)
+        {
+            return new(BillId.CreateUnique(), guestId, hostId, price, DateTime.UtcNow, DateTime.UtcNow);
+        }
+    
     }
 }

@@ -1,50 +1,56 @@
 ﻿using UberEats.Domain.Common.Models;
+using UberEats.Domain.Common.ValueObjects;
+using UberEats.Domain.Dinner.ValueObjects;
+using UberEats.Domain.Host.ValueObjects;
 using UberEats.Domain.Menu.Entities;
+using UberEats.Domain.Menu.Events;
 using UberEats.Domain.Menu.ValueObjects;
+using UberEats.Domain.MenuReview.ValueObjects;
 
 namespace UberEats.Domain.Menu
 {
-    public sealed class Menu : AggregateRoot<MenuId>
+    public sealed class Menu : AggregateRoot<MenuId,Guid>
     {
         private readonly List<MenuSection> _sections = new();
         private readonly List<DinnerId> _dinnerIds = new();
         private readonly List<MenuReviewId> _menuRevieIds = new();
- 
-        private readonly List<MenuSection> _sections = new();
-        private readonly List<MenuItem> _item = new();
-
-
         public string Name { get; }
         public string Description { get; }
-        public float AverageRating { get; }
+        public AverageRating AverageRating { get; }
 
         public IReadOnlyList<MenuSection> Sections => _sections.AsReadOnly();
-        public HostId HostId { get; }
-        public IReadonlyList<MenuSection> DinnerIds => _dinnerIds.AsReadOnly();
-        public IReadonlyList<MenuReviewId> MenuReviewIDs=> _menuRevieIds.AsReadOnly();
-        public DateTime CreatedDateTime { get; }
-        public DateTime UpdatedDateTime { get; }
-        public Menu(
+        public HostId HostId { get; private set; }
+        public IReadOnlyList<DinnerId> DinnerIds => _dinnerIds.AsReadOnly();
+        public IReadOnlyList<MenuReviewId> MenuReviewIDs=> _menuRevieIds.AsReadOnly();
+        public DateTime CreatedDateTime { get; private set; }
+        public DateTime UpdatedDateTime { get; private set; }
+
+        private Menu(
             MenuId menuId,
+            HostId hostId,
             string name,
             string description,
-            HostId hostId,
-            DateTime createdDateTime,
-            DateTime updateDatetTime) : base(menuId)
+            AverageRating averageRating,
+            List<MenuSection>? sections) : base(menuId)
         {
+            HostId = hostId;
             Name = name;
             Description = description;
-            HostId = hostId;
-            CreatedDateTime = createdDateTime;
-            UpdatedDateTime = updatedDateTime;
+            _sections = sections;
+            AverageRating = averageRating;
 
         }
-        public static Menu(
+        public static Menu Create(
+            HostId hostId,
             string name,
             string description,
-            HostId hostId)
+            List<MenuSection>? sections =null)
         {
-            retrun new(MenuId.CreateUnique(), name, description, hostId, DateTime.UtcNow, DateTime.UtcNow);
+            var menu =  new Menu(MenuId.CreateUnique(), hostId, name, description,AverageRating.CreateNew(0),
+                sections?? new());
+            menu.AddDomainEvent(new MenuCreated(menu));
+
+            return menu;
         }
     }
 }

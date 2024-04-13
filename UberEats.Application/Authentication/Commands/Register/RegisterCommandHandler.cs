@@ -2,9 +2,9 @@
 using MediatR;
 using UberEats.Application.Common.Interfaces.Authentication;
 using UberEats.Application.Common.Interfaces.Persistence;
-using UberEats.Domain.Entities;
 using UberEats.Domain.Common.Errors;
 using UberEats.Application.Authentication.Common;
+using UberEats.Domain.User;
 
 namespace UberEats.Application.Authentication.Commands.Register
 {

@@ -18,7 +18,16 @@ namespace UberEats.Domain.MenuReview
         public DinnerId DinnerId { get; }
         public DateTime CreatedDateTime { get;  }
         public DateTime UpdatedDateTime { get; }
-        public MenuReview(MenuReviewId menuReviewId, string comment, HostId hostId, MenuId menuId, GuestId guestId, DinnerId dinnerId, DateTime createdDateTime, DateTime updatedDateTime)
+        public MenuReview(
+            MenuReviewId menuReviewId,
+            string comment,
+            HostId hostId,
+            MenuId menuId,
+            GuestId guestId,
+            DinnerId dinnerId,
+            DateTime createdDateTime,
+            DateTime updatedDateTime) 
+            : base(menuReviewId)
         {
             Comment = comment;
             HostId = hostId;

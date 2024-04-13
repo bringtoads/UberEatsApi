@@ -4,11 +4,11 @@
         where TId : notnull
     {
         private readonly List<IDomainEvent> _domainEvents = new();
+
         public TId Id { get; protected set; }
 
-        IReadOnlyList<IDomainEvent> IHasDomainEvents.DomainEvents => throw new NotImplementedException();
-
-        public IReadOnlyList<IDomainEvent> DomainEvents()=> _domainEvents.AsReadOnly();
+        public IReadOnlyList<IDomainEvent> DomainEvents => _domainEvents.AsReadOnly();
+        
         protected Entity(TId id)
         {
             Id = id;
@@ -47,5 +47,6 @@
         {
             _domainEvents.Clear();
         }
+
     }
 }
