@@ -52,5 +52,8 @@ namespace UberEats.Domain.Menu
 
             return menu;
         }
+#pragma warning disable CS8618
+        private Menu() { }
+#pragma warning restore CS8618
     }
 }

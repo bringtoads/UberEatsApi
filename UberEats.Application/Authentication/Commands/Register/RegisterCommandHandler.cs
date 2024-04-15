@@ -28,13 +28,11 @@ namespace UberEats.Application.Authentication.Commands.Register
             }
 
             //2. Create user (generate unique Id) and add to db
-            var user = new User
-            {
-                FirstName = command.FirstName,
-                LastName = command.LastName,
-                Email = command.Email,
-                Password = command.Password
-            };
+            var user = User.Create(
+                command.FirstName,
+                command.LastName,
+                command.Email,
+                command.Password);
             _userRepository.Add(user);
 
             //3. Create JWT token

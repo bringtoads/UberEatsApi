@@ -39,5 +39,8 @@ namespace UberEats.Domain.Dinner.Entities
                 DateTime.UtcNow,
                 DateTime.UtcNow);
         }
+#pragma warning disable CS8618
+        private Reservation() { }
+#pragma warning restore CS8618
     }
 }

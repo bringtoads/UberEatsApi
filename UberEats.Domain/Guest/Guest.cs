@@ -9,5 +9,8 @@ namespace UberEats.Domain.Guest
         {
             
         }
+#pragma warning disable CS8618
+        private Guest() { }
+#pragma warning restore CS8618
     }
 }

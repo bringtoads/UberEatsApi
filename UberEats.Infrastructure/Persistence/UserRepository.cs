@@ -1,5 +1,5 @@
 ﻿using UberEats.Application.Common.Interfaces.Persistence;
-using UberEats.Domain.Entities;
+using UberEats.Domain.User;
 
 namespace UberEats.Infrastructure.Persistence
 {

@@ -44,5 +44,8 @@ namespace UberEats.Domain.User
                 DateTime.UtcNow,
                 DateTime.UtcNow);
         }
+#pragma warning disable CS8618
+        private User() { }
+#pragma warning restore CS8618
     }
 }

@@ -6,7 +6,7 @@ using System.Security.Cryptography;
 using System.Text;
 using UberEats.Application.Common.Interfaces.Authentication;
 using UberEats.Application.Common.Interfaces.Services;
-using UberEats.Domain.Entities;
+using UberEats.Domain.User;
 
 namespace UberEats.Infrastructure.Authentication
 {

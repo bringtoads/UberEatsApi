@@ -41,5 +41,8 @@ namespace UberEats.Domain.MenuReview
         {
             return new(MenuReviewId.CreateUnique(), comment, hostId, menuId, guestId, dinnerId, DateTime.UtcNow, DateTime.UtcNow);
         }
+#pragma warning disable CS8618
+        private MenuReview() { }
+#pragma warning restore CS8618
     }
 }

@@ -37,6 +37,8 @@ namespace UberEats.Domain.Bill
         {
             return new(BillId.CreateUnique(), guestId, hostId, price, DateTime.UtcNow, DateTime.UtcNow);
         }
-    
+#pragma warning disable CS8618
+        private Bill() { }
+#pragma warning restore CS8618
     }
 }

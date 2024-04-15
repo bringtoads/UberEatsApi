@@ -3,12 +3,12 @@
 POST {{UberEats.Api_HostAddress}}/auth/login
 Content-Type: application/json
 
+{
+  "email":"ajayadeepshrestha@gmail.com",
+  "password":"tobeornottobe@12345!"
+}
+
 # {
-#   "email":"ajayadeepshrestha@gmail.com",
+#   "email":"",
 #   "password":"ToBeOrNotToBe@12345!"
 # }
-
-{
-  "email":"",
-  "password":"ToBeOrNotToBe@12345!"
-}

@@ -52,5 +52,8 @@ namespace UberEats.Domain.Host
                 DateTime.UtcNow,
                 DateTime.UtcNow);
         }
+#pragma warning disable CS8618
+        private Host() { }
+#pragma warning restore CS8618
     }
 }

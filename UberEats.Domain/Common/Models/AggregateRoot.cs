@@ -9,7 +9,10 @@
         {
             Id =id;
         }
+        protected AggregateRoot() 
+        {
+            
+        }
 
-       
     }
 }
