@@ -8,7 +8,7 @@ using UberEats.Domain.Common.Models;
 using UberEats.Domain.Dinner.Entities;
 using UberEats.Domain.Dinner.ValueObjects;
 using UberEats.Domain.Host.ValueObjects;
-using UberEats.Domain.Menu.ValueObjects;
+using UberEats.Domain.Menus.ValueObjects;
 
 namespace UberEats.Domain.Dinner
 {

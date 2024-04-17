@@ -1,16 +1,16 @@
 ﻿using UberEats.Domain.Common.Models;
 
-namespace UberEats.Domain.Menu.ValueObjects
+namespace UberEats.Domain.Menus.ValueObjects
 {
-    public sealed class MenuItemId : ValueObject
+    public sealed class MenuSectionId : ValueObject
     {
         public Guid Value { get; }
-        private MenuItemId(Guid value)
+        private MenuSectionId(Guid value)
         {
             Value = value;
         }
 
-        public static MenuItemId CreateUnique()
+        public static MenuSectionId CreateUnique()
         {
             return new(Guid.NewGuid());
         }

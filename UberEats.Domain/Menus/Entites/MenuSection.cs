@@ -1,7 +1,7 @@
 ﻿using UberEats.Domain.Common.Models;
-using UberEats.Domain.Menu.ValueObjects;
+using UberEats.Domain.Menus.ValueObjects;
 
-namespace UberEats.Domain.Menu.Entities
+namespace UberEats.Domain.Menus.Entities
 {
     public sealed class MenuSection : Entity<MenuSectionId>
     {

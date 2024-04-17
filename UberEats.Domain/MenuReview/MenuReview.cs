@@ -3,7 +3,7 @@ using UberEats.Domain.Common.ValueObjects;
 using UberEats.Domain.Dinner.ValueObjects;
 using UberEats.Domain.Guest.ValuObjects;
 using UberEats.Domain.Host.ValueObjects;
-using UberEats.Domain.Menu.ValueObjects;
+using UberEats.Domain.Menus.ValueObjects;
 using UberEats.Domain.MenuReview.ValueObjects;
 
 namespace UberEats.Domain.MenuReview

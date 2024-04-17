@@ -2,12 +2,12 @@
 using UberEats.Domain.Common.ValueObjects;
 using UberEats.Domain.Dinner.ValueObjects;
 using UberEats.Domain.Host.ValueObjects;
-using UberEats.Domain.Menu.Entities;
-using UberEats.Domain.Menu.Events;
-using UberEats.Domain.Menu.ValueObjects;
+using UberEats.Domain.Menus.Entities;
+using UberEats.Domain.Menus.Events;
+using UberEats.Domain.Menus.ValueObjects;
 using UberEats.Domain.MenuReview.ValueObjects;
 
-namespace UberEats.Domain.Menu
+namespace UberEats.Domain.Menus
 {
     public sealed class Menu : AggregateRoot<MenuId,Guid>
     {

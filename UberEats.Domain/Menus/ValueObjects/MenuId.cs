@@ -1,6 +1,6 @@
 ﻿using UberEats.Domain.Common.Models;
 
-namespace UberEats.Domain.Menu.ValueObjects
+namespace UberEats.Domain.Menus.ValueObjects
 {
     public sealed class MenuId : AggregateRootId<Guid>
     {

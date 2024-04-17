@@ -26,4 +26,8 @@
     <ProjectReference Include="..\UberEats.Domain\UberEats.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Menu\Events\" />
+  </ItemGroup>
+
 </Project>

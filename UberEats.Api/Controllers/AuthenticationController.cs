@@ -3,14 +3,11 @@ using MapsterMapper;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Routing;
-using System.Net.WebSockets;
 using UberEats.Application.Authentication.Commands.Register;
 using UberEats.Application.Authentication.Common;
 using UberEats.Application.Authentication.Queries.Login;
 using UberEats.Contracts.Authentication;
 using UberEats.Domain.Common.Errors;
-using UberEats.Domain.User.ValueObjects;
 
 namespace UberEats.Api.Controllers
 {
