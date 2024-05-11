@@ -1,6 +1,5 @@
 ﻿using ErrorOr;
 using MediatR;
-using UberEats.Application.Authentication.Common;
 using UberEats.Domain.Host.ValueObjects;
 using UberEats.Domain.Menus.Entities;
 

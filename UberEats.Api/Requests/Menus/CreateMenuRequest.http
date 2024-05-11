@@ -1,0 +1,24 @@
+@host = http://localhost:5079
+@hostID = needUID
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJVYmVyRWF0cy5Eb21haW4uVXNlci5WYWx1ZU9iamVjdHMuVXNlcklkIiwiZ2l2ZW5fbmFtZSI6ImFqYXlhIGRlZXAiLCJmYW1pbHlfbmFtZSI6InNocmVzdGhhIiwianRpIjoiYjEzOWY3ZTEtNzk1Yi00ZTkxLWFjYjItNTQ4NWEyY2ViYjJmIiwiZXhwIjoxNzE1NDQ2Mjg0LCJpc3MiOiJVYmVyRWF0cyIsImF1ZCI6IlViZXJFYXRzIn0.ZoQUE0mA_JlOU3C3SVz_4hgCI43jIBwurz1FAmyZ-6U
+
+Post {{host}}/hosts/{{hostID}}/menus
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "name": " menu ko nam",
+  "description": "ekdam mitho khane kura",
+  "sections": [
+    {
+      "name" : "appetizers",
+      "description" : "paisa lutne tarika",
+      "Items" : [
+        {
+          "name" : " chicken tero ayeki"
+          "description" : " chicken ko tero ayeki"
+        }
+      ]
+    }
+  ]
+}
