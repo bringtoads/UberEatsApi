@@ -14,8 +14,8 @@ namespace UberEats.Domain.Menus
         private readonly List<MenuSection> _sections = new();
         private readonly List<DinnerId> _dinnerIds = new();
         private readonly List<MenuReviewId> _menuRevieIds = new();
-        public string Name { get; }
-        public string Description { get; }
+        public string Name { get; private set; }
+        public string Description { get; private set; }
         public AverageRating AverageRating { get; }
 
         public IReadOnlyList<MenuSection> Sections => _sections.AsReadOnly();
@@ -47,7 +47,7 @@ namespace UberEats.Domain.Menus
             List<MenuSection>? sections =null)
         {
             var menu =  new Menu(MenuId.CreateUnique(), hostId, name, description,AverageRating.CreateNew(0),
-                sections?? new());
+                sections?? []);
             menu.AddDomainEvent(new MenuCreated(menu));
 
             return menu;

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
@@ -9,6 +10,8 @@ using UberEats.Application.Common.Interfaces.Persistence;
 using UberEats.Application.Common.Interfaces.Services;
 using UberEats.Infrastructure.Authentication;
 using UberEats.Infrastructure.Persistence;
+using UberEats.Infrastructure.Persistence.Interceptors;
+using UberEats.Infrastructure.Persistence.Repositories;
 using UberEats.Infrastructure.Services;
 
 namespace UberEats.Infrastructure
@@ -19,14 +22,26 @@ namespace UberEats.Infrastructure
             this IServiceCollection services,
             ConfigurationManager configuration)
         {
-
-            services.AddAuth(configuration);
+            services
+                .AddAuth(configuration)
+                .AddPersistance();
             services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
-
-            services.AddScoped<IUserRepository, UserRepository>();
 
             return services;
         }
+        
+        public static IServiceCollection AddPersistance(this IServiceCollection services)
+        {
+            services.AddDbContext<UberEatsDbContext>(options=>
+                    options.UseSqlServer("Server=DESKTOP-DKKLKAI;Database=db_UberEats;Trusted_Connection=True;Encrypt=False;MultipleActiveResultSets=True;")
+            );
+            services.AddScoped<PublishDomainEventsInterceptor>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IMenuRepository, MenuRepository>();
+
+            return services;
+        }
+
         public static IServiceCollection AddAuth(
             this IServiceCollection services,
             ConfigurationManager configuration)

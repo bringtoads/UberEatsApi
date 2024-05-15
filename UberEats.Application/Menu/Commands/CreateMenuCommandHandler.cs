@@ -1,5 +1,6 @@
 ﻿using ErrorOr;
 using MediatR;
+using UberEats.Application.Common.Interfaces.Persistence;
 using UberEats.Domain.Host.ValueObjects;
 using UberEats.Domain.Menus.Entities;
 
@@ -8,9 +9,10 @@ namespace UberEats.Application.Menu.Commands
     public class CreateMenuCommandHandler : IRequestHandler<CreateMenuCommand, ErrorOr<Domain.Menus.Menu>>
     {
         // need to inject menu repo here;
-        public CreateMenuCommandHandler()
+        private readonly IMenuRepository _menuRepository;
+        public CreateMenuCommandHandler(IMenuRepository menuRepository)
         {
-            
+            _menuRepository = menuRepository;
         }
         public async Task<ErrorOr<Domain.Menus.Menu>> Handle(CreateMenuCommand request, CancellationToken cancellationToken)
         {
@@ -26,7 +28,8 @@ namespace UberEats.Application.Menu.Commands
                     items: sections.Items.ConvertAll(items => MenuItem.Create(
                         name: items.Name,
                         description: items.Description)))));
-            // add in repo _menuRepository.Add(menu);
+            // add in repo
+            _menuRepository.Add(menu);
             return menu;
         }
     }

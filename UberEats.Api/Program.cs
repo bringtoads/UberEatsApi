@@ -16,7 +16,7 @@ var app = builder.Build();
 {
     //request pipeline(middlewares)
     app.UseExceptionHandler("/error");
-
+    //app.UseHttpsRedirection();
     app.UseAuthentication();
     app.UseAuthorization();
     //app.UseHttpsRedirection();
