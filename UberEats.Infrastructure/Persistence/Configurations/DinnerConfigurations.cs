@@ -88,45 +88,39 @@ namespace UberEats.Infrastructure.Persistence.Configurations
 
         private void ConfigureReservationsTable(EntityTypeBuilder<Dinner> builder)
         {
-            builder
-                .OwnsMany(d => d.Reservations, reservationsBuilder =>
-                {
-                    reservationsBuilder.ToTable("Reservations");
+            builder.OwnsMany(d => d.Reservations, reservationsBuilder =>
+            {
+                reservationsBuilder.ToTable("Reservations");
 
-                    reservationsBuilder
-                        .WithOwner()
-                        .HasForeignKey("DinnerId");
+                reservationsBuilder.WithOwner().HasForeignKey("DinnerId");
 
-                    reservationsBuilder
+                reservationsBuilder
                         .Property(reservationsBuilder => reservationsBuilder.Id)
                         .ValueGeneratedNever()
                         .HasConversion(
                             id => id.Value,
                             value => ReservationId.Create(value));
 
-                    reservationsBuilder
-                        .Property(reservationsBuilder => reservationsBuilder.GuestCount);
+                reservationsBuilder.Property(reservationsBuilder => reservationsBuilder.Guestcount);
 
-                    reservationsBuilder
-                        .Property(reservationsBuilder => reservationsBuilder.ReservationStatus);
+                reservationsBuilder.Property(reservationsBuilder => reservationsBuilder.ReservationStatus);
 
-                    reservationsBuilder
+                reservationsBuilder
                         .Property(reservationsBuilder => reservationsBuilder.GuestId)
                         .HasConversion(
                             id => id.Value,
                             value => GuestId.Create(value));
-
-                    reservationsBuilder
+                reservationsBuilder
                         .Property(reservationsBuilder => reservationsBuilder.BillId)
                         .HasConversion(
                             id => id.Value,
                             value => BillId.Create(value));
 
-                    reservationsBuilder
-                        .Property(reservationsBuilder => reservationsBuilder.ArrivalDateTime)
-                        .IsRequired(false);
-                });
+                reservationsBuilder
+                    .Property(reservationsBuilder => reservationsBuilder.ArrivalDateTime)
+                    .IsRequired(false);
 
+            });
             builder.Metadata
                 .FindNavigation(nameof(Dinner.Reservations))!
                 .SetPropertyAccessMode(PropertyAccessMode.Field);
