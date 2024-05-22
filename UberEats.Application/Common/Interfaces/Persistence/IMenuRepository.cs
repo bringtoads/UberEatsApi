@@ -2,6 +2,6 @@
 {
     public interface IMenuRepository
     {
-        void Add(UberEats.Domain.Menus.Menu menu);
+        void Add(Domain.Menus.Menu menu);
     }
 }
